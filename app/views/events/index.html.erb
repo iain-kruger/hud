@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1 class = "center">Listing Events -  <%= link_to 'New Event', new_event_path, class: "btn btn-primary" %></h1>
+<%= paginate @events %>
+<div class="container">
+  <% @events.each do |event| %>
+  <div class="event-outer">
+    <div class="week center"><%= event.date.strftime("%U").to_i %></div>
+    <div class="<%= event.calendar %>">
+            
+            <div class="event-title center">
+                <h3><%= event.name %> - <%= event.person %></h1>
+            </div>
+
+      <table class = "event-table <%= event.calendar %>">
+            <thead>
+                <tr class = "center"  >
+                  <th>Date</th>
+                  <th>Weeks Until Event</th>
+                  <th>Days Until Event</th>
+                </tr>
+              </thead>
+            
+              <tr class = "center">
+                <td><%= event.date %></td>
+                <td><%=event.date.strftime("%U").to_i - Date.today.strftime("%U").to_i%></td>
+                <td><%= (event.date -  Date.today).to_i %></td> 
+                <td><%= link_to 'Edit', edit_event_path(event), class: "btn btn-primary" %> 
+                <%= link_to 'Destroy', event,  method: :delete, data: { confirm: 'Are you sure?' }, class: "btn   btn-danger" %></td>
+              </tr>
+            </table>
+    </div>
+  </div>
+           <div class="devider"></div>
+            <% end %>
+ 
+</div>
+
+
+
+
+

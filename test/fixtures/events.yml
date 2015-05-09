@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  date: 2015-05-06
+  person: MyString
+  week: 1
+
+two:
+  name: MyString
+  date: 2015-05-06
+  person: MyString
+  week: 1
