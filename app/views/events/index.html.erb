@@ -24,8 +24,8 @@
             
               <tr class = "center">
                 <td><%= event.date %></td>
-                <td><%=event.date.strftime("%U").to_i - Date.today.strftime("%U").to_i%></td>
-                <td><%= (event.date -  Date.today).to_i %></td> 
+                <td><%=event.weeks_to_event%></td>
+                <td><%= event.week_number %></td> 
                 <td><%= link_to 'Edit', edit_event_path(event), class: "btn btn-primary" %> 
                 <%= link_to 'Destroy', event,  method: :delete, data: { confirm: 'Are you sure?' }, class: "btn   btn-danger" %></td>
               </tr>
