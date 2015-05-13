@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508144459) do
+ActiveRecord::Schema.define(version: 20150512202101) do
 
-  create_table "events", force: true do |t|
+  create_table "events", force: :cascade do |t|
     t.string   "name"
     t.date     "date"
     t.string   "person"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20150508144459) do
     t.datetime "updated_at", null: false
     t.string   "type"
     t.string   "calendar"
+    t.date     "end_date"
+    t.text     "note"
   end
 
 end

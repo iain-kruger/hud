@@ -6,7 +6,7 @@
 <div class="container">
   <% @events.each do |event| %>
   <div class="event-outer">
-    <div class="week center"><%= event.date.strftime("%U").to_i %></div>
+    <div class="week"><p><%= event.week_number %></p> </div>
     <div class="<%= event.calendar %>">
             
             <div class="event-title center">
@@ -16,16 +16,24 @@
       <table class = "event-table <%= event.calendar %>">
             <thead>
                 <tr class = "center"  >
-                  <th>Date</th>
-                  <th>Weeks Until Event</th>
-                  <th>Days Until Event</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Number of Days</th>
+                  <th>Days until Event</th>
+                  <th>Weeks until Event</th>
+                  <th>Notes</th>
+
+
                 </tr>
               </thead>
             
               <tr class = "center">
                 <td><%= event.date %></td>
-                <td><%=event.weeks_to_event%></td>
-                <td><%= event.week_number %></td> 
+                <td><%= event.end_date %></td>
+                <td><%= event.no_of_days %></td> 
+                <td><%= event.days_to_event%></td>
+                <td><%= event.weeks_to_event %></td> 
+                <td><%= event.note %></td> 
                 <td><%= link_to 'Edit', edit_event_path(event), class: "btn btn-primary" %> 
                 <%= link_to 'Destroy', event,  method: :delete, data: { confirm: 'Are you sure?' }, class: "btn   btn-danger" %></td>
               </tr>

@@ -65,9 +65,16 @@
 	position: inline;
 	float: left;
 	height: 25px;
-	width: 25px;
+	width: 30px;
 	border-radius: 100%;
 	margin-top: 5px;
 	margin-left: 5px;
-	background-color: lightgrey;
-}
+	margin-bottom: 1px;
+	background-color: grey;
+	background-color: #FF8500;
+	p {
+		position: relative;
+		left: 6px;
+		top: 3px;
+    font-weight: bold;
+}}
