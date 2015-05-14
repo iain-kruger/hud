@@ -16,4 +16,14 @@ def week_number
 	 self.date.strftime("%U").to_i 
 end
 
+def odd_even
+	if week_number.odd? then
+		"odd"
+	else
+		"even"
+	end
+	
+	
+end
+
 end

@@ -4,7 +4,11 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
+    if params[:search]
+     @events = Event.where(name:(params[:search])).page(params[:page]).per(10)
+    else
     @events = Event.all.order('date').page(params[:page]).per(10)
+    end
   end
 
   # GET /events/1
@@ -69,6 +73,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :date, :person, :week, :calendar, :note, :end_date)
+      params.require(:event).permit(:name, :date, :person, :week, :calendar, :note, :end_date, :search)
     end
 end

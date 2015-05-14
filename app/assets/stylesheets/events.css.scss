@@ -70,11 +70,16 @@
 	margin-top: 5px;
 	margin-left: 5px;
 	margin-bottom: 1px;
-	background-color: grey;
-	background-color: #FF8500;
 	p {
 		position: relative;
 		left: 6px;
 		top: 3px;
     font-weight: bold;
-}}
+}
+}
+.odd{
+		background-color: #3EC871;
+	}
+	.even{
+		background-color: #CDFADE;
+	}

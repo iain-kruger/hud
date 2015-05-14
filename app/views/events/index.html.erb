@@ -1,12 +1,20 @@
 <p id="notice"><%= notice %></p>
 
+<%= form_tag events_path, :method => 'get' do %>
+<p>
+<div class="field container">
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </div>
+  <% end %>
+</p>
 
 <h1 class = "center">Listing Events -  <%= link_to 'New Event', new_event_path, class: "btn btn-primary" %></h1>
 <%= paginate @events %>
 <div class="container">
   <% @events.each do |event| %>
   <div class="event-outer">
-    <div class="week"><p><%= event.week_number %></p> </div>
+    <div class="week <%= event.odd_even %>"><p><%= event.week_number %></p> </div>
     <div class="<%= event.calendar %>">
             
             <div class="event-title center">
