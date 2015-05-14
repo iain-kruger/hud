@@ -4,8 +4,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    if params[:search]
-     @events = Event.where(name:(params[:search])).page(params[:page]).per(10)
+    if params[:search] 
+     @events = Event.where("name like ?", "%#{(params[:search])}%").page(params[:page]).per(10)
     else
     @events = Event.all.order('date').page(params[:page]).per(10)
     end
