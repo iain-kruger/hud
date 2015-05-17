@@ -23,12 +23,12 @@
       </div>
     </nav>
 <div class="body">
-
+<div class="container">
 <h1 class = "center">Future Events -  <%= link_to 'New Event', new_event_path, class: "btn btn-primary" %></h1>
 <%= paginate @events %>
 
 <% @events.each do |event| %>
-<div class="container">
+
     <div class="panel <%= event.calendar %>">
         <div class="panel-heading">
             <div class="panel-title">
