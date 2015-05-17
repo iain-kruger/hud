@@ -5,9 +5,17 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     if params[:search] 
-     @events = Event.where("name like ?", "%#{(params[:search])}%").page(params[:page]).per(10)
+     @events = Event.where("name like ?", "%#{(params[:search])}%").order('date').page(params[:page]).per(10)
     else
     @events = Event.all.order('date').page(params[:page]).per(10)
+    end
+  end
+
+  def future_events
+    if params[:search] 
+     @events = Event.where("name like ? AND date >= ?", "%#{(params[:search])}%",Date.today).page(params[:page]).per(10)
+    else
+    @events = Event.where(['date >= ?', Date.today]).order('date').page(params[:page]).per(10)
     end
   end
 
@@ -32,7 +40,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to events_path, notice: 'Event was successfully created.' }
+        format.html { redirect_to future_events_path, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -46,7 +54,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to events_path, notice: 'Event was successfully updated.' }
+        format.html { redirect_to future_events_path, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
@@ -60,7 +68,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to future_events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

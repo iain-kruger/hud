@@ -1,6 +1,12 @@
-<h1>Editing Event</h1>
 
+<div class="body container">
+	<h1 class = "center">Editing <%=@event.name%></h1>
+<div class="form-inner">
 <%= render 'form' %>
 
 <%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', future_events_path %>
+</div>
+</div>
+
+

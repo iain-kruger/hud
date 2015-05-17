@@ -1,3 +1,4 @@
+<p id="notice"><%= notice %></p>
 <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -12,7 +13,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
             <div class="form-group">
-            <%= form_tag events_path, :method => 'get' do %>
+            <%= form_tag future_events_path, :method => 'get' do %>
               <%= text_field_tag :search, params[:search] %>
             </div>
             <%= submit_tag "Search", :name => nil, class: "btn btn-success" %>
@@ -21,34 +22,37 @@
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
+<div class="body">
 
+<h1 class = "center">Future Events -  <%= link_to 'New Event', new_event_path, class: "btn btn-primary" %></h1>
+<%= paginate @events %>
 
-<div class="container body">
-	<h1 class="center">Showing <%=@event.name%></h1>
-    <div class="panel <%= @event.calendar %>">
+<% @events.each do |event| %>
+<div class="container">
+    <div class="panel <%= event.calendar %>">
         <div class="panel-heading">
             <div class="panel-title">
-              <div class="panel-week <%= @event.odd_even %>"><span><%= @event.week_number %></span></div>
-              <div class="panel-date"><%= @event.end_date.strftime("%a %d %b") %>  </div>
+              <div class="panel-week <%= event.odd_even %>"><span><%= event.week_number %></span></div>
+              <div class="panel-date"><%= event.end_date.strftime("%a %d %b") %>  </div>
               <div class="panel-days">
-                <div class="number"><%= @event.no_of_days %></div>
-                <div class="word"><%= "Day".pluralize(@event.no_of_days)  %></div>
+                <div class="number"><%= event.no_of_days %></div>
+                <div class="word"><%= "Day".pluralize(event.no_of_days)  %></div>
               </div>  
-              <div class="panel-event"><%= @event.name %> - <%= @event.person %></div>
+              <div class="panel-event"><%= event.name %> - <%= event.person %></div>
               
             </div>
             <div class="panel-info">
                 <div class="info-panel-inner">
                   <div class="day-info">
-                    <div class="info-number"><%= @event.days_to_event%></div>
-                    <div class="info-word"><%="Day".pluralize(@event.days_to_event)%></div>
+                    <div class="info-number"><%= event.days_to_event%></div>
+                    <div class="info-word"><%="Day".pluralize(event.days_to_event)%></div>
                   </div>
                   <div class="week-info">
-                    <div class="info-number"><%= @event.weeks_to_event %></div>
-                    <div class="info-word"><%="Week".pluralize(@event.weeks_to_event)%></div>
+                    <div class="info-number"><%= event.weeks_to_event %></div>
+                    <div class="info-word"><%="Week".pluralize(event.weeks_to_event)%></div>
                   </div>
                   <div class="note-info">
-                    <div class="info-number">Note:</div> <div class="info-note"> <p><%= @event.note %></p></div> 
+                    <div class="info-number">Note:</div> <div class="info-note"> <p><%= event.note %></p></div> 
                   </div>
               </div>
 
@@ -56,11 +60,12 @@
         </div>
 
         <div class="panel-footer">
-          <%= link_to 'Back', future_events_path, class: "text-pull-right" %> | 
-          <%= link_to 'Destroy', @event,  method: :delete, data: { confirm: 'Are you sure?' }%>
+          <%= link_to 'Edit', edit_event_path(event), class: "text-pull-right" %> | 
+          <%= link_to 'Destroy', event,  method: :delete, data: { confirm: 'Are you sure?' }%>
         </div>
 
     </div>
 
 </div>
+<% end %>
 
