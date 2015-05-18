@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :events 
-  root 'events#index'
+  root 'events#future_events'
 
   get 'future_events' => 'events#future_events'
   # The priority is based upon order of creation: first created -> highest priority.
