@@ -22,6 +22,7 @@ def odd_even
 	else
 		"even"
 	end
+end
 	
 def weeks_left
 	if days_to_event.to_i <=7 then
@@ -37,7 +38,7 @@ def days_left
 	daysLeft = days_to_event - (weeks_left * 7)
 	days = 0
 	if daysLeft == 7 then 
-		days.to_i	
+		days.to_i
 	else
 		daysLeft.to_i
 	end
@@ -49,8 +50,6 @@ def weeks_left_final
 	else
 		weeks_to_event - 1
 	end
-end
-
 end
 
 end
