@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -25,6 +25,7 @@
 <div class="body">
 <div class="container">
 <h1 class = "center">Future Events -  <%= link_to 'New Event', new_event_path, class: "btn btn-primary" %></h1>
+<p class= "center" id="notice"><%= notice %></p>
 <%= paginate @events %>
 
 
@@ -59,12 +60,12 @@
             <div class="panel-info">
                 <div class="info-panel-inner">
                   <div class="day-info">
-                    <div class="info-number"><%= event.days_to_event%></div>
-                    <div class="info-word"><%="Day".pluralize(event.days_to_event)%></div>
+                    <div class="info-number"><%= event.weeks_left_final%></div>
+                    <div class="info-word"><%="Week".pluralize(event.weeks_left_final)%></div>
                   </div>
                   <div class="week-info">
-                    <div class="info-number"><%= event.weeks_to_event %></div>
-                    <div class="info-word"><%="Week".pluralize(event.weeks_to_event)%></div>
+                    <div class="info-number"><%= event.days_left%></div>
+                    <div class="info-word"><%="Day".pluralize(event.days_left)%></div>
                   </div>
                   <div class="note-info">
                     <div class="info-number">Note:</div> <div class="info-note"> <p><%= event.note %></p></div> 
