@@ -1,21 +1,21 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
+  before_action :logged_in_user, only: [:edit, :update, :index, :destroy, :show]
   # GET /events
   # GET /events.json
   def index
     if params[:search] 
-     @events = Event.where("name like ?", "%#{(params[:search])}%").order('date').page(params[:page]).per(10)
+     @events = Event.where("name like ?", "%#{(params[:search])}%").order('date')
     else
-    @events = Event.all.order('date').page(params[:page]).per(10)
+    @events = Event.all.order('date')
     end
   end
 
   def future_events
     if params[:search] 
-     @events = Event.where("name like ? AND date >= ?", "%#{(params[:search])}%",Date.today).page(params[:page]).per(10)
+     @events = Event.where("name like ? AND date >= ?", "%#{(params[:search])}%",Date.today)
     else
-    @events = Event.where(['date >= ?', Date.today]).order('date').page(params[:page]).per(10)
+    @events = Event.where(['date >= ?', Date.today]).order('date')
     end
   end
 
@@ -84,3 +84,13 @@ class EventsController < ApplicationController
       params.require(:event).permit(:name, :date, :person, :week, :calendar, :note, :end_date, :search)
     end
 end
+
+private
+
+ def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end

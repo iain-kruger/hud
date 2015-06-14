@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
-  get 'users/new'
+  get 'sessions/new'
 
+  get 'users/new'
+resources :account_activations, only: [:edit]
   resources :events 
-  root 'events#future_events'
+  root 'users#new'
 
   get 'future_events' => 'events#future_events'
   resources :users
+  get    'signup'  => 'users#new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
