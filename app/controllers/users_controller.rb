@@ -12,7 +12,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    client = YahooWeather::Client.new
+    @response = client.fetch(12797168)
   	@user = User.find(params[:id])
+    @links = Link.all
   end
 
     def create

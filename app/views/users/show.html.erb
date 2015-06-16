@@ -1,1 +1,7 @@
 <div class="body"><%= @user.name %>, <%= @user.email %></div> 
+
+<%= @response.units.temperature  %>, <%= @response.condition.temp  %>
+       <ol class="links">
+  <%= render @links %>
+</ol>
+<div><%= link_to "New Doc", new_link_path, class: "btn btn-primary" %></div>
