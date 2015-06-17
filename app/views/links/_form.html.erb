@@ -1,25 +1,21 @@
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
 <%= form_for(@link) do |f| %>
-  <% if @link.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:</h2>
-
-      <ul>
-      <% @link.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  
 
   <div class="field">
-    <%= f.label :link %><br>
-    <%= f.text_field :link %>
+    <%= f.label "Enter the path to the doc." %><br>
+    <%= f.text_field :link, class: 'form-control' %>
   </div>
+  <p></p>
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label "What is the name of this doc?" %><br>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
+  <p>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save Doc", class: "btn btn-primary" %>
   </div>
 <% end %>
+</p>

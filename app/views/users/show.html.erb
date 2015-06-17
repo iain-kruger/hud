@@ -1,7 +1,30 @@
-<div class="body"><%= @user.name %>, <%= @user.email %></div> 
 
-<%= @response.units.temperature  %>, <%= @response.condition.temp  %>
-       <ol class="links">
-  <%= render @links %>
-</ol>
-<div><%= link_to "New Doc", new_link_path, class: "btn btn-primary" %></div>
+<div class="row">
+      <div class="col-md-8">
+          <div class="weather-panel">
+              <div class="weather-image">
+                  <%= image_tag("svg/cloud-drizzle-lightning-moon.svg")%>
+              </div>
+          <div class="weather-info">
+            <%= image_tag(weather_image_url)%>
+          </div>
+          </div>
+      </div>
+
+      
+      
+
+      <div class="col-md-4">
+            <div class="docs-list panel panel-primary">
+              <div class="panel-heading">Links to Docs</div>
+              <div class="panel-body">
+                <ul class="list-unstyled">
+                <%= render @links %>
+              </ul>
+              </div>
+              <div class="panel-footer"><%= link_to "New Link", new_link_path%></div>
+            </div>
+      </div>
+
+</div>
+
