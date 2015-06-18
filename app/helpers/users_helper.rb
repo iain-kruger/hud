@@ -16,7 +16,7 @@ end
 
 def weather_image_url
 code = weather.condition.code
-prefix ="svg/"
+prefix ="assets/svg/"
 weather_image = {
 "3"		=>	"cloud-lightning.svg",
 "4"		=>	"cloud-lightning.svg",
@@ -45,7 +45,7 @@ weather_image = {
 "47"	=>	"cloud-lightning.svg",
 "3200"	=>	"error"}
 
-@weather_image_url =prefix+weather_image["#{code}"]
+@weather_image_url =weather_image["#{code}"]
 end
 
 def temp_in_C(temp)
