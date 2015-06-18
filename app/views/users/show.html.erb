@@ -5,7 +5,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="weather-image">
-                      <%= image_tag(image_path "#{weather_image_url}")%>
+                      <%= image_tag(image_path(weather_image_url))%>
                     </div>
                   </div>
                 </div> 
@@ -17,14 +17,14 @@
                             <div class="row">
                               <div class="col-md-6">
                                   <div class="high-low-temp-image">
-                                    <%=image_tag(image_path "svg/thermometer-25.svg")%>
+                                    <%=image_tag(image_path("SVG/thermometer-25.svg"))%>
                                   </div>
                                   <div class="center"><%=temp_in_C(weather.forecasts[0].low)%>°C</div>
                               </div>
                             
                                 <div class="col-md-6">
                                   <div class="high-low-temp-image">
-                                    <%=image_tag(image_path("svg/thermometer-100.svg"))%>
+                                    <%=image_tag(image_path("SVG/thermometer-100.svg"))%>
                                   </div>
                                   <div class="center"><%=temp_in_C(weather.forecasts[0].high)%>°C</div>
                                 </div>
