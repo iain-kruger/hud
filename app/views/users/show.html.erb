@@ -1,13 +1,55 @@
 
 <div class="row">
       <div class="col-md-8">
-          <div class="weather-panel">
-              <div class="weather-image">
-                  <%= image_tag("svg/cloud-drizzle-lightning-moon.svg")%>
-              </div>
-          <div class="weather-info">
-            <%= image_tag(weather_image_url)%>
-          </div>
+          <div class="weather-panel">             
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="weather-image">
+                      <%= image_tag(weather_image_url)%>
+                    </div>
+                  </div>
+                </div> 
+                <div class="row">
+
+                  <div class="col-md-12">
+                          <div class="high-low-temp center"> 
+
+                            <div class="row">
+                              <div class="col-md-6">
+                                  <div class="high-low-temp-image">
+                                    <%=image_tag("svg/thermometer-25.svg")%>
+                                  </div>
+                                  <div class="center"><%=temp_in_C(weather.forecasts[0].low)%>°C</div>
+                              </div>
+                            
+                                <div class="col-md-6">
+                                  <div class="high-low-temp-image">
+                                    <%=image_tag("svg/thermometer-100.svg")%>
+                                  </div>
+                                  <div class="center"><%=temp_in_C(weather.forecasts[0].high)%>°C</div>
+                                </div>
+
+                            </div>
+                          </div>
+
+                  </div>
+                </div> 
+                <div class="row">
+                  
+                <div class="current-temp center"> 
+                  <div class="col-md-6">
+                      <%=temp_in_C(weather.condition.temp)%>°
+                    </div>
+                    <div class="col-md-6">
+                      <h1>C</h1>
+                    </div>
+                  </div>
+                </div>  
+                          
+                              
+                                             
+              
+              
           </div>
       </div>
 

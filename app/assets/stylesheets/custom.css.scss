@@ -282,12 +282,43 @@ aside {
  /* weather panel */
 .weather-panel{
   border: solid 1px lightgrey;
+  border-radius: 5px;
+  padding: 20px;
+  width:350px;
+  .row{
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
   
 }
 
 .weather-image{
-  position: relative;
+  margin-right: auto;
+  margin-left: auto;
   width: 50px;
   height:50px;
   
+}
+
+.current-temp{
+  width:150px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 4em;
+  font-weight: bold;
+
+}
+
+.weather-row{
+  margin: 10px;
+}
+.high-low-temp{
+  width:100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.high-low-temp-image{
+width: 20px;
+margin-left: auto;
+margin-right: auto; 
 }
