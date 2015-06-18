@@ -1,11 +1,29 @@
 
-<div class="body">
+
 <div class="container">
-<h1 class = "center">Future Events -  <%= link_to 'New Event', new_event_path, class: "btn btn-primary" %></h1>
-<p class= "center" id="notice"><%= notice %></p>
+  
+      <div class="search-panel pull-right">
+        
+          <div class="search-field-outer">
+              <%= form_tag future_events_path, :method => 'get' do %>
+              <%= text_field_tag :search, params[:search], class: 'form-control' %>
+          </div>
+          
+          <div class="search-button-outer">
+              <%= submit_tag "Search", :name => nil, class: "btn btn-success" %>
+              <% end %>
+          </div>
+      
+      </div>
 
 
+<div class="row">
+  <div class="col-md-12">
+    <h1 class = "center">Future Events - <%= link_to 'New Event', new_event_path%></h1>
+  </div>  
+</div>
 
+</div>
 <% count =1 %>
 <% month = ""  %>
 <% @events.each do |event| %>
@@ -21,12 +39,7 @@
 <%else %>
 
 <%end%>
-<div class="container"><div class="form-group">
-            <%= form_tag events_path, :method => 'get' do %>
-              <%= text_field_tag :search, params[:search] %>
-            </div>
-            <%= submit_tag "Search", :name => nil, class: "btn btn-success" %>
-            <% end %></div>
+
     <div class="event-panel panel <%= event.calendar %>">
         <div class="panel-heading">
             <div class="panel-title">
@@ -67,4 +80,6 @@
 
 <% month = event.date.strftime("%b")   %>
 <% end %>
+
 </div>
+

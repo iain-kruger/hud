@@ -1,5 +1,23 @@
-<p id="notice"><%= notice %></p>
+      <div class="search-panel pull-right">
+        
+          <div class="search-field-outer">
+              <%= form_tag future_events_path, :method => 'get' do %>
+              <%= text_field_tag :search, params[:search], class: 'form-control' %>
+          </div>
+          
+          <div class="search-button-outer">
+              <%= submit_tag "Search", :name => nil, class: "btn btn-success" %>
+              <% end %>
+          </div>
+      
+      </div>
 
+
+<div class="row">
+  <div class="col-md-12">
+    <h1 class = "center">All Events</h1>
+  </div>  
+</div>
 
 <% @events.each do |event| %>
 <div class="container">
